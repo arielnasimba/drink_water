@@ -55,6 +55,8 @@ body{
     flex-direction: column;
 }
 
+
+
 .bottle {
     display: flex;
     flex-direction: column;
@@ -65,7 +67,18 @@ body{
     background-color: white;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
+
+    overflow: hidden;
 }
+
+.water {
+    background-color: blue; 
+    height: 0;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
 .bottle .text_counter{
     /* background-color: red; */
     display: flex;
@@ -75,6 +88,7 @@ body{
     height: 100%;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
+    /* position: relative; */
 }
 .bottle .text_counter .text{
     width: 100%;

@@ -1,10 +1,7 @@
 // create mini bottles
 
 let body = document.body;
-let main_glasses = body.querySelector(".bott_box").querySelector(".list_mini_glasses");
-console.log(main_glasses);
-/////////////
-
+let list_mini_glasses = body.querySelector(".bott_box").querySelector(".list_mini_glasses");
 
 for (let rows = 0; rows < 2; rows++) {
 
@@ -55,5 +52,65 @@ for (let rows = 0; rows < 2; rows++) {
         row.appendChild(mini_bottle);
         
     }
-    main_glasses.appendChild(row);
+    list_mini_glasses.appendChild(row);
 }
+
+let list_mini_glasses_v2 = document.querySelectorAll(".mini_bottle");
+
+let main_bottle = document.querySelector(".bottle");
+
+let pourcentag = document.createElement("div");
+
+pourcentag.classList.add("percentage");
+
+let waterElement = document.querySelector(".water");
+
+function fillBottle(index) {
+    // calculate height of height
+    let waterHeight = 12.5 * (index + 1);
+    
+    // ajust size of water in bottle
+    waterElement.style.height = `${waterHeight}%`;
+    
+    // calculate liter remaining
+    let remainingLiters = 2 - (waterHeight / 100) * 2;
+    
+    // maj counter of liter
+    document.querySelector("#liter_cpt").style.color = "grey";
+    document.querySelector("#liter_cpt").nextElementSibling.style.color = "grey";
+    document.querySelector("#liter_cpt").innerText = remainingLiters.toFixed(2) + "L";
+
+    pourcentag.innerText = waterHeight.toFixed(2) + "%";
+    waterElement.appendChild(pourcentag);
+    document.querySelector("#liter_cpt").style.top = `-${waterHeight}%`;
+    pourcentag.style.color = `white`;
+    pourcentag.style.paddingLeft = `25%`;
+ 
+    
+        if (waterHeight === 50) {
+            document.querySelector("#liter_cpt").display = "none";
+        } else {
+            document.querySelector("#liter_cpt").display = "block";
+        }
+
+    document.querySelector("#liter_cpt").style.zIndex = "1";
+    document.querySelector("#liter_cpt").nextElementSibling.style.zIndex = "1";
+
+}
+
+list_mini_glasses_v2.forEach(( glasse , index) => {
+
+
+    glasse.style.background = "rgb(66, 230, 245)"
+    glasse.addEventListener( "click", ()=>{
+        console.log("hello");   
+        setTimeout(fillBottle(index), 2000)
+        // main_bottle.appendChild(pourcentage
+        
+        // glasse.style.background = "white"
+        // glasse.style.textColor = "white"
+
+    }); 
+    
+})
+
